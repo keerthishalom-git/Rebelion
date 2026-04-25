@@ -4,664 +4,621 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Rebelion</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --ink: #0e0d0b;
-  --ivory: #f7f4ef;
-  --warm-white: #fdfcfa;
-  --sand: #e8e2d9;
-  --gold: #b8975a;
-  --gold-light: #f5eed8;
-  --muted: #9a9590;
-  --border: rgba(14,13,11,0.1);
-  --border-strong: rgba(14,13,11,0.2);
-  --serif: 'Playfair Display', Georgia, serif;
-  --sans: 'Jost', system-ui, sans-serif;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
-body {
-  font-family: var(--sans);
-  background: var(--ivory);
-  color: var(--ink);
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  cursor: none;
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --gray: #6b6b6b;
+  --light: #f5f5f5;
+  --border: #e5e5e5;
+  --gold: #c4922a;
+  --font: 'Inter', system-ui, sans-serif;
 }
 
-.cursor {
-  width: 8px; height: 8px;
-  background: var(--ink); border-radius: 50%;
-  position: fixed; pointer-events: none;
-  z-index: 9999; transform: translate(-50%, -50%);
-}
-.cursor-ring {
-  width: 32px; height: 32px;
-  border: 0.5px solid var(--ink); border-radius: 50%;
-  position: fixed; pointer-events: none;
-  z-index: 9998; transform: translate(-50%, -50%); opacity: 0.4;
+body {
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--black);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 .page { display: none; }
-.page.active { display: block; animation: fadeUp 0.4s ease forwards; }
-@keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+.page.active { display: block; }
 
 /* ── NAV ── */
 nav {
   position: sticky; top: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 56px;
-  background: var(--ivory);
-  border-bottom: 0.5px solid var(--border);
+  padding: 0 48px; height: 64px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
 }
 .logo {
-  font-family: var(--serif); font-size: 22px; font-weight: 500;
-  letter-spacing: 6px; text-transform: uppercase;
-  color: var(--ink); text-decoration: none; font-style: italic;
+  font-size: 15px; font-weight: 500;
+  letter-spacing: 0.5px; color: var(--black);
+  text-decoration: none;
 }
-.logo span { color: var(--gold); font-style: normal; }
-.nav-right { display: flex; gap: 12px; }
-.btn-ghost {
-  font-family: var(--sans); font-size: 10px; letter-spacing: 2px;
-  text-transform: uppercase; font-weight: 400; padding: 9px 24px;
-  border: 0.5px solid var(--border-strong); background: transparent;
-  color: var(--ink); cursor: none; transition: all 0.3s;
+.logo em { color: var(--gold); font-style: normal; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 14px; font-weight: 400; color: var(--gray);
+  text-decoration: none; transition: color 0.2s;
 }
-.btn-ghost:hover { background: var(--ink); color: var(--ivory); }
-.btn-dark {
-  font-family: var(--sans); font-size: 10px; letter-spacing: 2px;
-  text-transform: uppercase; font-weight: 400; padding: 9px 24px;
-  background: var(--ink); color: var(--ivory); border: none;
-  cursor: none; transition: opacity 0.3s;
+.nav-links a:hover { color: var(--black); }
+.nav-cta {
+  font-size: 14px; font-weight: 400; color: var(--black);
+  padding: 8px 20px; border: 1px solid var(--black);
+  background: transparent; cursor: pointer; transition: all 0.2s;
+  font-family: var(--font);
 }
-.btn-dark:hover { opacity: 0.75; }
+.nav-cta:hover { background: var(--black); color: var(--white); }
 
-.eyebrow {
-  font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
-  font-weight: 500; color: var(--gold); margin-bottom: 20px;
-}
+/* ── SECTIONS ── */
+.section { padding: 96px 48px; }
+.section-sm { padding: 64px 48px; }
+.section-xl { padding: 128px 48px; }
+.max { max-width: 1100px; margin: 0 auto; }
+.max-sm { max-width: 680px; margin: 0 auto; }
 
-/* ══════════════════════════
-   PAGE 1 — LANDING
-══════════════════════════ */
-.hero {
-  min-height: 92vh;
-  display: grid; grid-template-columns: 1fr 1fr;
-  border-bottom: 0.5px solid var(--border);
+/* ── TYPOGRAPHY ── */
+.label {
+  font-size: 12px; font-weight: 500; color: var(--gray);
+  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px;
 }
-.hero-left {
-  padding: 80px 56px; border-right: 0.5px solid var(--border);
-  display: flex; flex-direction: column; justify-content: space-between;
+.label-gold { color: var(--gold); }
+h1 {
+  font-size: clamp(40px, 6vw, 72px); font-weight: 300;
+  line-height: 1.1; letter-spacing: -1.5px; color: var(--black);
 }
-.hero-title {
-  font-family: var(--serif); font-size: 72px; font-weight: 500;
-  line-height: 1.05; letter-spacing: -1px; color: var(--ink);
+h2 {
+  font-size: clamp(28px, 4vw, 48px); font-weight: 300;
+  line-height: 1.15; letter-spacing: -0.8px; color: var(--black);
 }
-.hero-title em { font-style: italic; color: var(--gold); }
-.hero-sub {
-  font-size: 15px; font-weight: 400; color: #555;
-  max-width: 380px; line-height: 1.8; margin-top: 28px;
+h3 { font-size: 20px; font-weight: 500; color: var(--black); margin-bottom: 10px; }
+p.lead {
+  font-size: 18px; font-weight: 300; color: var(--gray);
+  line-height: 1.75; max-width: 520px;
 }
-.waitlist-wrap { margin-top: 48px; }
-.waitlist-label {
-  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
-  font-weight: 500; color: #666; margin-bottom: 12px;
-}
-.waitlist-row {
-  display: flex; border: 0.5px solid var(--border-strong); overflow: hidden;
-}
-.waitlist-row input {
-  flex: 1; padding: 14px 18px; font-family: var(--sans);
-  font-size: 13px; font-weight: 400; border: none;
-  background: var(--warm-white); color: var(--ink); outline: none;
-}
-.waitlist-row button {
-  padding: 14px 28px; background: var(--ink); color: var(--ivory);
-  border: none; font-family: var(--sans); font-size: 9px;
-  letter-spacing: 2px; text-transform: uppercase; font-weight: 400;
-  cursor: none; transition: opacity 0.3s; white-space: nowrap;
-}
-.waitlist-row button:hover { opacity: 0.8; }
-.hero-note { font-size: 11px; color: #888; margin-top: 10px; }
-.hero-stats { display: flex; gap: 40px; padding-top: 40px; border-top: 0.5px solid var(--border); }
-.hstat-num { font-family: var(--serif); font-size: 36px; font-weight: 500; color: var(--ink); }
-.hstat-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; color: #666; margin-top: 4px; }
+p.body { font-size: 15px; font-weight: 400; color: var(--gray); line-height: 1.7; }
 
-.hero-right {
-  background: var(--ink); display: flex; flex-direction: column;
-  justify-content: space-between; padding: 56px;
-  position: relative; overflow: hidden;
+/* ── BUTTONS ── */
+.btn {
+  display: inline-block; font-family: var(--font);
+  font-size: 14px; font-weight: 400; cursor: pointer;
+  transition: all 0.2s; text-decoration: none;
 }
-.hero-right::before {
-  content: 'R'; position: absolute; top: -40px; left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--serif); font-size: 320px; font-weight: 500;
-  font-style: italic; color: rgba(184,151,90,0.04);
-  pointer-events: none; user-select: none; line-height: 1;
+.btn-primary {
+  background: var(--black); color: var(--white);
+  border: 1px solid var(--black); padding: 12px 28px;
 }
-.hero-right-top { position: relative; z-index: 1; border-bottom: 0.5px solid rgba(247,244,239,0.08); padding-bottom: 40px; margin-bottom: 40px; }
-.hero-right-label { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; font-weight: 500; color: var(--gold); margin-bottom: 28px; }
-.hero-right-features { list-style: none; }
-.hero-right-features li {
-  font-size: 14px; font-weight: 400; color: rgba(247,244,239,0.85);
-  padding: 13px 0; border-bottom: 0.5px solid rgba(247,244,239,0.06);
-  display: flex; align-items: center; gap: 12px;
+.btn-primary:hover { opacity: 0.8; }
+.btn-secondary {
+  background: transparent; color: var(--black);
+  border: 1px solid var(--border); padding: 12px 28px;
 }
-.hero-right-features li::before { content: ''; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
-.hero-right-features li:last-child { border-bottom: none; }
-.hero-right-quote { position: relative; z-index: 1; }
-.hero-right-quote blockquote {
-  font-family: var(--serif); font-size: 26px; font-style: italic;
-  font-weight: 500; color: var(--ivory); line-height: 1.45; margin-bottom: 16px;
+.btn-secondary:hover { border-color: var(--black); }
+.btn-link {
+  background: none; border: none; color: var(--black);
+  padding: 0; font-size: 14px; display: flex; align-items: center; gap: 6px;
 }
-.hero-right-quote blockquote span { color: var(--gold); }
-.hero-right-attr { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; font-weight: 400; color: rgba(247,244,239,0.35); margin-bottom: 28px; }
-.hero-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-.hero-tag {
-  font-size: 9px; padding: 6px 14px;
-  border: 0.5px solid rgba(247,244,239,0.15);
-  color: rgba(247,244,239,0.55);
-  letter-spacing: 1.5px; text-transform: uppercase; font-weight: 400;
-}
-.hero-tag.lit { border-color: rgba(184,151,90,0.5); color: var(--gold); }
+.btn-link:hover { color: var(--gold); }
+.btn-link::after { content: '→'; transition: transform 0.2s; }
+.btn-link:hover::after { transform: translateX(4px); }
 
-/* Marquee */
-.marquee-strip {
-  border-bottom: 0.5px solid var(--border); padding: 13px 0;
-  overflow: hidden; background: var(--warm-white);
-}
-.marquee-inner {
-  display: flex; animation: marquee 22s linear infinite; white-space: nowrap;
-}
-.marquee-inner span { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; font-weight: 500; color: #777; padding: 0 40px; }
-.marquee-inner span.dot { color: var(--gold); padding: 0 8px; }
-@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-
-/* How — 3 cols */
-.how {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  border-bottom: 0.5px solid var(--border);
-}
-.how-col { padding: 56px 48px; border-right: 0.5px solid var(--border); }
-.how-col:last-child { border-right: none; }
-.how-num {
-  font-family: var(--serif); font-size: 52px; font-weight: 500;
-  font-style: italic; color: rgba(14,13,11,0.07); line-height: 1; margin-bottom: 20px;
-}
-.how-tag {
-  display: inline-block; font-size: 9px; letter-spacing: 2px;
-  text-transform: uppercase; font-weight: 500; padding: 4px 12px;
-  border: 0.5px solid; margin-bottom: 14px;
-}
-.how-tag.c { border-color: rgba(184,151,90,0.4); color: var(--gold); }
-.how-tag.b { border-color: var(--border-strong); color: #666; }
-.how-title { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
-.how-desc { font-size: 13px; font-weight: 400; color: #555; line-height: 1.7; }
+/* ── DIVIDER ── */
+hr { border: none; border-top: 1px solid var(--border); }
 
 /* ══════════════════════════
-   PAGE 2 — BRANDS & CREATORS
+   HOME PAGE
 ══════════════════════════ */
-.two-col {
-  display: grid; grid-template-columns: 1fr 1fr;
-  border-bottom: 0.5px solid var(--border);
-  min-height: 60vh;
-}
-.two-col-left { padding: 72px 56px; border-right: 0.5px solid var(--border); }
-.two-col-right { padding: 72px 56px; background: var(--ink); }
-.two-col-right .eyebrow { color: rgba(184,151,90,0.7); }
-.col-title { font-family: var(--serif); font-size: 44px; font-weight: 500; color: var(--ink); line-height: 1.1; margin-bottom: 20px; }
-.col-title em { font-style: italic; color: var(--gold); }
-.col-title-dark { font-family: var(--serif); font-size: 44px; font-weight: 500; color: var(--ivory); line-height: 1.1; margin-bottom: 20px; }
-.col-title-dark em { font-style: italic; color: var(--gold); }
-.col-desc { font-size: 14px; font-weight: 400; color: #555; line-height: 1.75; margin-bottom: 32px; max-width: 340px; }
-.col-desc-dark { font-size: 14px; font-weight: 400; color: rgba(247,244,239,0.65); line-height: 1.75; margin-bottom: 32px; max-width: 340px; }
-.feature-list { list-style: none; margin-bottom: 36px; }
-.feature-list li {
-  font-size: 13px; font-weight: 400; color: #444;
-  padding: 10px 0; border-bottom: 0.5px solid var(--border);
-  display: flex; align-items: center; gap: 10px;
-}
-.feature-list li:last-child { border-bottom: none; }
-.feature-list li::before { content: ''; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
-.feature-list-dark { list-style: none; margin-bottom: 36px; }
-.feature-list-dark li {
-  font-size: 13px; font-weight: 400; color: rgba(247,244,239,0.7);
-  padding: 10px 0; border-bottom: 0.5px solid rgba(255,255,255,0.07);
-  display: flex; align-items: center; gap: 10px;
-}
-.feature-list-dark li:last-child { border-bottom: none; }
-.feature-list-dark li::before { content: ''; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
-.col-price { font-family: var(--serif); font-size: 52px; font-weight: 500; color: var(--ink); line-height: 1; }
-.col-price-note { font-size: 13px; font-weight: 400; color: #888; margin-top: 4px; margin-bottom: 28px; }
-.col-price-dark { font-family: var(--serif); font-size: 52px; font-weight: 500; color: var(--gold); line-height: 1; }
-.col-price-note-dark { font-size: 13px; font-weight: 400; color: rgba(247,244,239,0.4); margin-top: 4px; margin-bottom: 28px; }
 
-/* AI Kit strip */
-.ai-strip {
-  padding: 32px 56px; background: #f0f7eb;
-  border-bottom: 0.5px solid #a8d48a;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.ai-dot { width: 8px; height: 8px; background: #3B6D11; border-radius: 50%; display: inline-block; margin-right: 10px; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.2} }
-.ai-strip-text { font-size: 15px; font-weight: 500; color: #1a4d0a; }
-.ai-strip-sub { font-size: 12px; font-weight: 400; color: #3B6D11; margin-top: 3px; }
-.ai-strip-badge { font-size: 10px; padding: 5px 14px; border: 0.5px solid #a8d48a; background: #fff; color: #27500A; letter-spacing: 1px; font-weight: 500; }
+/* Hero */
+.hero { padding: 120px 48px 96px; border-bottom: 1px solid var(--border); }
+.hero-inner { max-width: 1100px; margin: 0 auto; }
+.hero h1 { margin-bottom: 28px; max-width: 760px; }
+.hero h1 span { color: var(--gold); }
+.hero p.lead { margin-bottom: 40px; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 80px; }
+.hero-stats { display: flex; gap: 64px; padding-top: 48px; border-top: 1px solid var(--border); }
+.stat-num { font-size: 32px; font-weight: 300; color: var(--black); letter-spacing: -0.5px; }
+.stat-label { font-size: 13px; font-weight: 400; color: var(--gray); margin-top: 4px; }
+
+/* How it works */
+.how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); }
+.how-item { background: var(--white); padding: 48px 40px; }
+.how-num { font-size: 13px; font-weight: 500; color: var(--gold); margin-bottom: 20px; }
+.how-title { font-size: 18px; font-weight: 500; color: var(--black); margin-bottom: 10px; }
+.how-desc { font-size: 14px; font-weight: 400; color: var(--gray); line-height: 1.7; }
+
+/* Features list */
+.features-wrap { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
+.features-list { display: flex; flex-direction: column; }
+.feature-item { padding: 24px 0; border-bottom: 1px solid var(--border); }
+.feature-item:first-child { border-top: 1px solid var(--border); }
+.feature-title { font-size: 15px; font-weight: 500; color: var(--black); margin-bottom: 6px; }
+.feature-desc { font-size: 14px; font-weight: 400; color: var(--gray); line-height: 1.65; }
+
+/* Quote */
+.quote-section { background: var(--light); padding: 80px 48px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.quote-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+.quote-text { font-size: clamp(20px, 3vw, 32px); font-weight: 300; color: var(--black); line-height: 1.4; letter-spacing: -0.3px; margin-bottom: 20px; }
+.quote-attr { font-size: 13px; font-weight: 400; color: var(--gray); }
 
 /* ══════════════════════════
-   PAGE 3 — REVENUE & CONTACT
+   BRANDS & CREATORS PAGE
 ══════════════════════════ */
-.revenue-hero {
-  padding: 80px 56px 64px; border-bottom: 0.5px solid var(--border);
-  display: flex; align-items: flex-end; justify-content: space-between;
-}
-.revenue-hero h1 { font-family: var(--serif); font-size: 56px; font-weight: 500; font-style: italic; color: var(--ink); line-height: 1.1; }
-.revenue-hero-right { text-align: right; }
-.revenue-hero-num { font-family: var(--serif); font-size: 52px; font-weight: 500; color: var(--gold); }
-.revenue-hero-label { font-size: 11px; font-weight: 500; color: #777; letter-spacing: 1px; margin-top: 4px; }
+.split { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+.split-col { padding: 80px 56px; }
+.split-col:first-child { border-right: 1px solid var(--border); }
+.split-col h2 { margin-bottom: 16px; }
+.split-col p.body { margin-bottom: 32px; max-width: 380px; }
+.mini-list { list-style: none; margin-bottom: 36px; }
+.mini-list li { font-size: 14px; font-weight: 400; color: var(--gray); padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+.mini-list li:last-child { border-bottom: none; }
+.mini-list li::before { content: ''; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+.price-big { font-size: 52px; font-weight: 300; color: var(--black); letter-spacing: -1px; line-height: 1; }
+.price-note { font-size: 13px; font-weight: 400; color: var(--gray); margin-top: 6px; margin-bottom: 28px; }
 
-.revenue-grid {
-  display: grid; grid-template-columns: 1fr 1fr 1fr;
-  border-bottom: 0.5px solid var(--border);
-}
-.revenue-col { padding: 48px; border-right: 0.5px solid var(--border); }
-.revenue-col:last-child { border-right: none; background: var(--ink); }
-.rev-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; color: #888; margin-bottom: 16px; }
-.rev-label-dark { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; color: rgba(247,244,239,0.35); margin-bottom: 16px; }
-.rev-num { font-family: var(--serif); font-size: 44px; font-weight: 500; color: var(--ink); line-height: 1; }
-.rev-num-dark { font-family: var(--serif); font-size: 44px; font-weight: 500; color: var(--gold); line-height: 1; }
-.rev-unit { font-size: 13px; font-weight: 400; color: #888; margin-top: 5px; margin-bottom: 20px; }
-.rev-unit-dark { font-size: 13px; font-weight: 400; color: rgba(247,244,239,0.4); margin-top: 5px; margin-bottom: 20px; }
-.rev-desc { font-size: 13px; font-weight: 400; color: #555; line-height: 1.65; }
-.rev-desc-dark { font-size: 13px; font-weight: 400; color: rgba(247,244,239,0.65); line-height: 1.65; }
+/* AI Strip */
+.ai-strip { padding: 32px 48px; background: #f8fdf5; border-bottom: 1px solid #d4edbc; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.ai-dot { display: inline-block; width: 8px; height: 8px; background: #3B6D11; border-radius: 50%; margin-right: 10px; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.ai-text { font-size: 15px; font-weight: 500; color: #1a4d0a; }
+.ai-sub { font-size: 13px; font-weight: 400; color: #3B6D11; margin-top: 3px; }
 
-/* Market */
-.market-strip {
-  display: grid; grid-template-columns: repeat(3,1fr);
-  border-bottom: 0.5px solid var(--border);
-  background: var(--gold-light);
-}
-.market-item { padding: 36px 48px; border-right: 0.5px solid rgba(184,151,90,0.2); }
+/* ══════════════════════════
+   CREATORS / BRANDS DEDICATED
+══════════════════════════ */
+.detail-hero { padding: 96px 48px 64px; border-bottom: 1px solid var(--border); }
+.detail-hero-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; }
+.detail-hero h1 { max-width: 560px; }
+.detail-hero p.lead { max-width: 400px; flex-shrink: 0; }
+.steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border-bottom: 1px solid var(--border); }
+.step { background: var(--white); padding: 48px 40px; }
+.step-num { font-size: 12px; font-weight: 500; color: var(--gold); letter-spacing: 1px; margin-bottom: 16px; }
+.step-title { font-size: 18px; font-weight: 500; color: var(--black); margin-bottom: 10px; }
+.step-desc { font-size: 14px; font-weight: 400; color: var(--gray); line-height: 1.7; }
+.perks { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--border); border-bottom: 1px solid var(--border); }
+.perk { background: var(--white); padding: 36px 40px; }
+.perk-title { font-size: 15px; font-weight: 500; color: var(--black); margin-bottom: 8px; }
+.perk-desc { font-size: 14px; font-weight: 400; color: var(--gray); line-height: 1.65; }
+.detail-cta { padding: 80px 48px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+.detail-cta-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+.detail-cta h2 { max-width: 480px; }
+.detail-cta-right { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+
+/* ══════════════════════════
+   REVENUE & CONTACT
+══════════════════════════ */
+.rev-hero { padding: 96px 48px 64px; border-bottom: 1px solid var(--border); }
+.rev-hero-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; }
+.rev-hero h1 { max-width: 480px; }
+.rev-target { text-align: right; flex-shrink: 0; }
+.rev-target-num { font-size: 56px; font-weight: 300; color: var(--gold); letter-spacing: -1px; line-height: 1; }
+.rev-target-label { font-size: 13px; font-weight: 400; color: var(--gray); margin-top: 6px; }
+.rev-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border-bottom: 1px solid var(--border); }
+.rev-col { background: var(--white); padding: 56px 48px; }
+.rev-col.dark { background: var(--black); }
+.rev-label { font-size: 12px; font-weight: 500; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+.rev-col.dark .rev-label { color: rgba(255,255,255,0.4); }
+.rev-num { font-size: 52px; font-weight: 300; color: var(--black); letter-spacing: -1px; line-height: 1; margin-bottom: 6px; }
+.rev-col.dark .rev-num { color: var(--gold); }
+.rev-unit { font-size: 13px; font-weight: 400; color: var(--gray); margin-bottom: 20px; }
+.rev-col.dark .rev-unit { color: rgba(255,255,255,0.35); }
+.rev-desc { font-size: 14px; font-weight: 400; color: var(--gray); line-height: 1.65; }
+.rev-col.dark .rev-desc { color: rgba(255,255,255,0.55); }
+.market-bar { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border-bottom: 1px solid var(--border); background-color: var(--light); }
+.market-item { padding: 36px 48px; background: var(--light); border-right: 1px solid var(--border); }
 .market-item:last-child { border-right: none; }
-.market-num { font-family: var(--serif); font-size: 36px; font-weight: 500; color: var(--ink); }
-.market-label { font-size: 10px; font-weight: 500; color: #7a6030; letter-spacing: 1px; margin-top: 4px; text-transform: uppercase; }
-
-/* Contact */
-.contact {
-  display: grid; grid-template-columns: 1fr 1fr;
-  border-bottom: 0.5px solid var(--border);
-}
-.contact-left {
-  padding: 72px 56px; border-right: 0.5px solid var(--border);
-  background: var(--ink);
-}
-.contact-left h2 {
-  font-family: var(--serif); font-size: 48px; font-weight: 500;
-  font-style: italic; color: var(--ivory); line-height: 1.15; margin-bottom: 28px;
-}
-.contact-left h2 span { color: var(--gold); }
-.contact-btns { display: flex; flex-direction: column; gap: 10px; max-width: 260px; }
-.contact-btn {
-  padding: 13px 24px; font-family: var(--sans); font-size: 10px;
-  letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
-  cursor: none; transition: all 0.3s; text-align: center;
-}
-.contact-btn.d { background: var(--ivory); color: var(--ink); border: none; }
-.contact-btn.d:hover { opacity: 0.85; }
-.contact-btn.o { background: transparent; color: var(--ivory); border: 0.5px solid rgba(247,244,239,0.3); }
-.contact-btn.o:hover { background: rgba(247,244,239,0.1); }
-
-.contact-right { padding: 72px 56px; }
-.contact-right h3 { font-family: var(--serif); font-size: 28px; font-weight: 500; color: var(--ink); margin-bottom: 28px; }
-.contact-form { display: flex; flex-direction: column; gap: 12px; }
-.form-input {
-  width: 100%; padding: 13px 16px; font-family: var(--sans);
-  font-size: 13px; font-weight: 400; border: 0.5px solid var(--border-strong);
-  background: var(--warm-white); color: var(--ink); outline: none;
-}
-.form-input::placeholder { color: #aaa; }
+.market-num { font-size: 36px; font-weight: 300; color: var(--black); letter-spacing: -0.5px; }
+.market-label { font-size: 13px; font-weight: 400; color: var(--gray); margin-top: 6px; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+.contact-left { padding: 80px 56px; border-right: 1px solid var(--border); background: var(--black); }
+.contact-left h2 { color: var(--white); margin-bottom: 16px; }
+.contact-left p { font-size: 15px; font-weight: 400; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 36px; max-width: 340px; }
+.contact-btn { display: inline-block; font-family: var(--font); font-size: 14px; font-weight: 400; padding: 12px 28px; cursor: pointer; transition: all 0.2s; margin-bottom: 12px; width: 220px; text-align: center; }
+.contact-btn-w { background: var(--white); color: var(--black); border: 1px solid var(--white); }
+.contact-btn-w:hover { opacity: 0.85; }
+.contact-btn-o { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.3); }
+.contact-btn-o:hover { border-color: var(--white); }
+.contact-right { padding: 80px 56px; }
+.contact-right h3 { font-size: 22px; font-weight: 500; margin-bottom: 28px; }
+.form { display: flex; flex-direction: column; gap: 12px; }
 .form-row { display: flex; gap: 12px; }
-.form-row .form-input { flex: 1; }
+.form input, .form select, .form textarea {
+  width: 100%; padding: 12px 16px; font-family: var(--font);
+  font-size: 14px; font-weight: 400;
+  border: 1px solid var(--border); background: var(--white);
+  color: var(--black); outline: none; transition: border 0.2s;
+}
+.form input:focus, .form select:focus, .form textarea:focus { border-color: var(--black); }
+.form input::placeholder, .form textarea::placeholder { color: #bbb; }
+.form textarea { resize: none; }
 .form-submit {
-  padding: 13px; background: var(--ink); color: var(--ivory);
-  border: none; font-family: var(--sans); font-size: 10px;
-  letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
-  cursor: none; transition: opacity 0.3s; margin-top: 4px;
+  padding: 12px 28px; background: var(--black); color: var(--white);
+  border: 1px solid var(--black); font-family: var(--font); font-size: 14px;
+  font-weight: 400; cursor: pointer; transition: opacity 0.2s; align-self: flex-start;
 }
 .form-submit:hover { opacity: 0.8; }
-.form-note { font-size: 11px; color: #aaa; margin-top: 6px; }
+.form-note { font-size: 12px; color: var(--gray); margin-top: 4px; }
 
-/* BOTTOM NAV */
-.bottom-bar {
-  display: flex; border-top: 0.5px solid var(--border);
-  background: var(--ivory); position: sticky; bottom: 0; z-index: 99;
-}
-.b-tab {
-  flex: 1; padding: 15px; text-align: center;
-  font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
-  font-weight: 500; color: #999; cursor: none;
-  border-top: 1.5px solid transparent; transition: all 0.2s;
-  background: none; border-bottom: none; border-left: none; border-right: none;
-}
-.b-tab.active { color: var(--ink); border-top-color: var(--gold); }
-.b-tab:hover { color: var(--ink); }
+/* ── BOTTOM NAV ── */
+.bottom-nav { display: flex; border-top: 1px solid var(--border); background: var(--white); position: sticky; bottom: 0; z-index: 99; }
+.b-tab { flex: 1; padding: 14px; text-align: center; font-size: 12px; font-weight: 400; color: var(--gray); cursor: pointer; border: none; background: none; border-top: 2px solid transparent; transition: all 0.2s; font-family: var(--font); }
+.b-tab.active { color: var(--black); border-top-color: var(--black); }
+.b-tab:hover { color: var(--black); }
 
-/* FOOTER */
-footer {
-  padding: 28px 56px; display: flex; align-items: center;
-  justify-content: space-between; border-top: 0.5px solid var(--border);
-}
-.f-logo { font-family: var(--serif); font-size: 18px; font-style: italic; letter-spacing: 4px; text-transform: uppercase; font-weight: 500; }
-.f-logo span { color: var(--gold); font-style: normal; }
-.f-links { display: flex; gap: 24px; font-size: 10px; font-weight: 400; color: #888; }
-.f-links a { text-decoration: none; color: inherit; }
-.f-copy { font-size: 10px; font-weight: 400; color: #888; }
+/* ── FOOTER ── */
+footer { padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); }
+.f-logo { font-size: 14px; font-weight: 500; color: var(--black); }
+.f-logo em { color: var(--gold); font-style: normal; }
+.f-links { display: flex; gap: 24px; }
+.f-links a { font-size: 13px; font-weight: 400; color: var(--gray); text-decoration: none; }
+.f-links a:hover { color: var(--black); }
+.f-copy { font-size: 13px; font-weight: 400; color: var(--gray); }
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
 <nav>
-  <a class="logo" href="#">Rebel<span>ion</span></a>
-  <div class="nav-right">
-    <button class="btn-ghost" onclick="showPage('two')">For Brands & Creators</button>
-    <button class="btn-dark" onclick="showPage('home')">Join waitlist</button>
-  </div>
+  <a class="logo" href="#" onclick="showPage('home')">Rebel<em>ion</em></a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('two')">Brands & Creators</a></li>
+    <li><a href="#" onclick="showPage('three')">Revenue</a></li>
+    <li><a href="#" onclick="showPage('three')">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="showPage('home')">Join waitlist</button>
 </nav>
 
-<!-- ══ PAGE 1 — LANDING ══ -->
+<!-- ══ HOME ══ -->
 <div class="page active" id="page-home">
 
-  <section class="hero">
-    <div class="hero-left">
-      <div>
-        <div class="eyebrow">The creator economy, redefined</div>
-        <h1 class="hero-title">Where brands<br>hire creators<br>by <em>aesthetic,</em>
-        <p class="hero-sub">The professional marketplace where brands find the right creator — and creators get hired for the right work.</p>
-        <div class="waitlist-wrap">
-          <div class="waitlist-label">Request early access</div>
-          <div class="waitlist-row">
-            <input type="email" placeholder="Your email address"/>
-            <button>Request access</button>
-          </div>
-          <div class="hero-note">Invitation only · Free to join</div>
-        </div>
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="label label-gold">The creator economy, redefined</div>
+      <h1>Where brands hire creators<br>by <span>aesthetic,</span> not algorithm</h1>
+      <p class="lead">The professional marketplace where brands find the right creator — and creators get hired for the right work.</p>
+      <div class="hero-btns">
+        <button class="btn btn-primary" onclick="showPage('creators')">For creators</button>
+        <button class="btn btn-secondary" onclick="showPage('brands')">For brands</button>
       </div>
       <div class="hero-stats">
         <div>
-          <div class="hstat-num">12K+</div>
-          <div class="hstat-label">Verified creators</div>
+          <div class="stat-num">12,000+</div>
+          <div class="stat-label">Verified creators</div>
         </div>
         <div>
-          <div class="hstat-num">$4.2M</div>
-          <div class="hstat-label">GMV facilitated</div>
+          <div class="stat-num">$4.2M</div>
+          <div class="stat-label">GMV facilitated</div>
         </div>
         <div>
-          <div class="hstat-num">840+</div>
-          <div class="hstat-label">Brand partners</div>
+          <div class="stat-num">840+</div>
+          <div class="stat-label">Brand partners</div>
         </div>
       </div>
-    </div>
-    <div class="hero-right">
-      <div class="hero-right-top">
-        <div class="hero-right-label">What Rebelion offers</div>
-        <ul class="hero-right-features">
-          <li>Aesthetic-first creator discovery</li>
-          <li>AI-powered live media kits</li>
-          <li>Shoppable video portfolios</li>
-          <li>Verified Pro creator profiles</li>
-          <li>Direct chat, call and contracting</li>
-          <li>Real-time commerce analytics</li>
-        </ul>
-      </div>
-      <div class="hero-right-quote">
-        <blockquote>"Your aesthetic is your currency.<br><span>Your curation is your power."</span></blockquote>
-        <div class="hero-right-attr">— The Rebelion Manifesto</div>
-        <div class="hero-tags">
-          <span class="hero-tag lit">Minimalist-Modern</span>
-          <span class="hero-tag">Quiet Luxury</span>
-          <span class="hero-tag lit">Street Luxe</span>
-          <span class="hero-tag">Dark Academia</span>
-          <span class="hero-tag lit">Clean Girl</span>
-          <span class="hero-tag">Old Money</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="marquee-strip">
-    <div class="marquee-inner">
-      <span>Aesthetic Discovery</span><span class="dot">·</span>
-      <span>AI Media Kits</span><span class="dot">·</span>
-      <span>Shoppable Content</span><span class="dot">·</span>
-      <span>Direct Contracting</span><span class="dot">·</span>
-      <span>Verified Creators</span><span class="dot">·</span>
-      <span>Commerce Analytics</span><span class="dot">·</span>
-      <span>Aesthetic Discovery</span><span class="dot">·</span>
-      <span>AI Media Kits</span><span class="dot">·</span>
-      <span>Shoppable Content</span><span class="dot">·</span>
-      <span>Direct Contracting</span><span class="dot">·</span>
-      <span>Verified Creators</span><span class="dot">·</span>
-      <span>Commerce Analytics</span><span class="dot">·</span>
     </div>
   </div>
 
-  <section class="how">
-    <div class="how-col">
-      <div class="how-num">01</div>
-      <span class="how-tag c">Creators</span>
-      <div class="how-title">Build your storefront</div>
-      <div class="how-desc">Register, post styled content, tag your aesthetic and products. AI generates your live media kit automatically.</div>
+  <div class="section">
+    <div class="max">
+      <div class="label" style="margin-bottom:48px;">How it works</div>
+      <div class="how-grid">
+        <div class="how-item">
+          <div class="how-num">01 — Creators</div>
+          <div class="how-title">Build your storefront</div>
+          <div class="how-desc">Register, post styled content, tag your aesthetic and products. AI generates your live media kit automatically.</div>
+        </div>
+        <div class="how-item">
+          <div class="how-num">02 — Brands</div>
+          <div class="how-title">Search by aesthetic</div>
+          <div class="how-desc">Find creators by visual identity — Minimalist-Modern, Quiet Luxury, Street Luxe. Not follower count.</div>
+        </div>
+        <div class="how-item">
+          <div class="how-num">03 — Both</div>
+          <div class="how-title">Connect and close</div>
+          <div class="how-desc">Chat, call, or text directly on platform. Sign contracts. No email threads. No PR guesswork.</div>
+        </div>
+      </div>
     </div>
-    <div class="how-col">
-      <div class="how-num">02</div>
-      <span class="how-tag b">Brands</span>
-      <div class="how-title">Search by aesthetic</div>
-      <div class="how-desc">Find creators by visual identity — not follower count. Review verified profiles with real commerce data.</div>
+  </div>
+
+  <div class="section" style="border-top:1px solid var(--border);">
+    <div class="max">
+      <div class="features-wrap">
+        <div>
+          <div class="label" style="margin-bottom:16px;">What makes us different</div>
+          <h2>Everything commerce needs.</h2>
+        </div>
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="feature-title">Aesthetic-first discovery</div>
+            <div class="feature-desc">Search creators by visual identity, not follower count. Find who actually matches your brand.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-title">AI-powered media kits</div>
+            <div class="feature-desc">Claude AI auto-generates live media kits — real-time stats, aesthetic scores, and rate cards for every creator.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-title">Shoppable content</div>
+            <div class="feature-desc">Every video is natively shoppable. Direct product links. Pure purchase intent on every post.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-title">Direct contracting</div>
+            <div class="feature-desc">Chat, call, or text. Sign contracts directly on platform. No middlemen. No back and forth.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-title">Commerce analytics</div>
+            <div class="feature-desc">Real clicks, real conversions, real GMV. Not vanity metrics.</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="how-col">
-      <div class="how-num">03</div>
-      <span class="how-tag b">Both</span>
-      <div class="how-title">Connect and close</div>
-      <div class="how-desc">Chat, call, or text directly on platform. Sign contracts. No email threads. No PR guesswork.</div>
+  </div>
+
+  <div class="quote-section">
+    <div class="quote-inner">
+      <div class="quote-text">"Your aesthetic is your currency. Your curation is your power."</div>
+      <div class="quote-attr">— The Rebelion Manifesto</div>
     </div>
-  </section>
+  </div>
 
 </div>
 
-<!-- ══ PAGE 2 — BRANDS & CREATORS ══ -->
+<!-- ══ BRANDS & CREATORS ══ -->
 <div class="page" id="page-two">
 
-  <div class="two-col">
-    <div class="two-col-left">
-      <div class="eyebrow">For creators</div>
-      <div class="col-title">Your aesthetic.<br><em>Your business.</em></div>
-      <div class="col-desc"> Build a professional storefront, let AI generate your media kit, and get hired by brands that match your visual identity.</div>
-      <div class="col-price">$49</div>
-      <div class="col-price-note">per month</div>
-      <ul class="feature-list">
+  <div class="section-sm" style="border-bottom:1px solid var(--border);">
+    <div class="max">
+      <div class="label">Brands & Creators</div>
+      <h1 style="max-width:600px;">Two sides.<br>One platform.</h1>
+    </div>
+  </div>
+
+  <div class="split">
+    <div class="split-col">
+      <div class="label label-gold">For creators</div>
+      <h2>Your aesthetic.<br>Your business.</h2>
+      <p class="body" style="margin-top:12px;margin-bottom:28px;">Stop chasing algorithms. Build a professional storefront, let AI generate your media kit, and get hired by brands that match your visual identity.</p>
+      <div class="price-big">$49</div>
+      <div class="price-note">per month</div>
+      <ul class="mini-list">
         <li>Verified Pro badge</li>
         <li>AI media kit — auto-synced by Claude AI</li>
         <li>Priority placement in brand searches</li>
         <li>Shoppable video portfolio</li>
         <li>Direct brand chat, call and contracting</li>
       </ul>
-      <button class="btn-dark" onclick="showPage('creators')">Explore creator details →</button>
+      <button class="btn btn-link" onclick="showPage('creators')">Full creator details</button>
     </div>
-    <div class="two-col-right">
-      <div class="eyebrow">For brands</div>
-      <div class="col-title-dark">Find the right<br><em>creative partner.</em></div>
-      <div class="col-desc-dark">Search by aesthetic identity — Minimalist-Modern, Quiet Luxury, Street Luxe. Review AI-generated media kits with verified commerce data. Hire directly.</div>
-      <div class="col-price-dark">10%</div>
-      <div class="col-price-note-dark">commission per deal closed</div>
-      <ul class="feature-list-dark">
+    <div class="split-col">
+      <div class="label">For brands</div>
+      <h2>Find the right<br>creative partner.</h2>
+      <p class="body" style="margin-top:12px;margin-bottom:28px;">Search by aesthetic identity. Review AI-generated media kits with verified commerce data. Hire directly — no PR, no guesswork.</p>
+      <div class="price-big">10%</div>
+      <div class="price-note">commission per deal closed</div>
+      <ul class="mini-list">
         <li>Unlimited aesthetic search</li>
         <li>AI-matched creator recommendations</li>
-        <li>Verified performance data — no fake stats</li>
+        <li>Verified performance data</li>
         <li>Campaign analytics dashboard</li>
-        <li>Direct contracting and payments on platform</li>
+        <li>Direct contracting and payments</li>
       </ul>
-      <button class="btn-ghost" style="color:var(--ivory);border-color:rgba(247,244,239,0.3);cursor:none;" onclick="showPage('brands')">Explore brand details →</button>
+      <button class="btn btn-link" onclick="showPage('brands')">Full brand details</button>
     </div>
   </div>
 
   <div class="ai-strip">
     <div>
-      <div class="ai-strip-text"><span class="ai-dot"></span>AI Media Kit — Powered by Claude AI</div>
-      <div class="ai-strip-sub">Auto-syncs performance stats, aesthetic scores, and rate cards in real time. Every creator profile, always updated.</div>
+      <div class="ai-text"><span class="ai-dot"></span>AI Media Kit — Powered by Claude AI</div>
+      <div class="ai-sub">Auto-syncs performance stats, aesthetic scores, and rate cards in real time for every creator.</div>
     </div>
-    <span class="ai-strip-badge">Learn more →</span>
   </div>
 
 </div>
 
-<!-- ══ PAGE — CREATORS ══ -->
+<!-- ══ CREATORS ══ -->
 <div class="page" id="page-creators">
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:92vh;border-bottom:0.5px solid var(--border);">
-    <div style="padding:80px 56px;border-right:0.5px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;">
+  <div class="detail-hero">
+    <div class="detail-hero-inner">
       <div>
-        <div class="eyebrow">For creators</div>
-        <h1 style="font-family:var(--serif);font-size:64px;font-weight:500;line-height:1.05;letter-spacing:-1px;color:var(--ink);">Your aesthetic.<br><em style="font-style:italic;color:var(--gold);">Your storefront.</em></h1>
-        <p style="font-size:15px;font-weight:400;color:#555;max-width:380px;line-height:1.8;margin-top:28px;">Stop chasing algorithms. Build a professional storefront on Rebelion — post styled content, tag your niche, and let AI generate your live media kit. Brands come to you.</p>
-        <div style="margin-top:40px;display:flex;flex-direction:column;gap:20px;">
-          <div style="padding:20px 0;border-bottom:0.5px solid var(--border);">
-            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:6px;">Step 01</div>
-            <div style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--ink);margin-bottom:6px;">Register & Build</div>
-            <div style="font-size:13px;font-weight:400;color:#555;line-height:1.65;">Create your professional profile. Set your niche, upload styled content, and tag every product with shoppable links.</div>
-          </div>
-          <div style="padding:20px 0;border-bottom:0.5px solid var(--border);">
-            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:6px;">Step 02</div>
-            <div style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--ink);margin-bottom:6px;">AI Does the Work</div>
-            <div style="font-size:13px;font-weight:400;color:#555;line-height:1.65;">Claude AI automatically generates your live media kit — syncing your stats, tagging your aesthetic, and suggesting your rate card based on real market data.</div>
-          </div>
-          <div style="padding:20px 0;">
-            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:6px;">Step 03</div>
-            <div style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--ink);margin-bottom:6px;">Get Hired Directly</div>
-            <div style="font-size:13px;font-weight:400;color:#555;line-height:1.65;">Brands find you through aesthetic search, review your media kit, and reach out via chat, call, or text — directly on Rebelion. Sign contracts. Get paid.</div>
-          </div>
+        <div class="label label-gold">For creators</div>
+        <h1>Your aesthetic.<br>Your storefront.<br>Your business.</h1>
+      </div>
+      <p class="lead">Stop chasing the algorithm. Build a professional presence on Rebelion and get hired by brands that actually match your creative identity.</p>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">Step 01</div>
+      <div class="step-title">Register & Build</div>
+      <div class="step-desc">Create your professional profile. Set your niche, upload styled content, and tag every product with shoppable links.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">Step 02</div>
+      <div class="step-title">AI Does the Work</div>
+      <div class="step-desc">Claude AI automatically generates your live media kit — syncing stats, tagging your aesthetic, and suggesting your rate card based on real market data.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">Step 03</div>
+      <div class="step-title">Get Hired Directly</div>
+      <div class="step-desc">Brands find you through aesthetic search, review your media kit, and reach out via chat, call, or text — directly on Rebelion. Sign contracts. Get paid.</div>
+    </div>
+  </div>
+
+  <div class="section" style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="max">
+      <div class="label" style="margin-bottom:40px;">What you get</div>
+      <div class="perks" style="border:1px solid var(--border);">
+        <div class="perk" style="border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
+          <div class="perk-title">Verified Pro Badge</div>
+          <div class="perk-desc">Signal trust and professionalism to every brand partner on the platform.</div>
+        </div>
+        <div class="perk" style="border-bottom:1px solid var(--border);">
+          <div class="perk-title">AI Media Kit — Live</div>
+          <div class="perk-desc">Auto-synced performance data, aesthetic scores, and rate card suggestions. Always updated.</div>
+        </div>
+        <div class="perk" style="border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
+          <div class="perk-title">Priority Search Placement</div>
+          <div class="perk-desc">Appear first when brands search for your aesthetic niche.</div>
+        </div>
+        <div class="perk" style="border-bottom:1px solid var(--border);">
+          <div class="perk-title">Shoppable Portfolio</div>
+          <div class="perk-desc">Every video has tagged product links. Every post can earn.</div>
+        </div>
+        <div class="perk" style="border-right:1px solid var(--border);">
+          <div class="perk-title">AI Rate Card</div>
+          <div class="perk-desc">Know exactly what you're worth based on real market data — never undercharge again.</div>
+        </div>
+        <div class="perk">
+          <div class="perk-title">Direct Contracting</div>
+          <div class="perk-desc">Sign brand contracts directly on platform. No email threads, no middlemen.</div>
         </div>
       </div>
-      <button class="btn-dark" style="align-self:flex-start;margin-top:40px;">Join as creator</button>
     </div>
-    <div style="background:var(--ink);padding:56px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);font-family:var(--serif);font-size:300px;font-weight:500;font-style:italic;color:rgba(184,151,90,0.04);pointer-events:none;user-select:none;line-height:1;">C</div>
-      <div style="position:relative;z-index:1;">
-        <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:500;color:rgba(184,151,90,0.7);margin-bottom:28px;">What you get</div>
-        <ul style="list-style:none;">
-          <li style="font-size:14px;font-weight:400;color:rgba(247,244,239,0.85);padding:13px 0;border-bottom:0.5px solid rgba(247,244,239,0.06);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Verified Pro badge — signals trust to brands</li>
-          <li style="font-size:14px;font-weight:400;color:rgba(247,244,239,0.85);padding:13px 0;border-bottom:0.5px solid rgba(247,244,239,0.06);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>AI Media Kit — auto-synced, always live</li>
-          <li style="font-size:14px;font-weight:400;color:rgba(247,244,239,0.85);padding:13px 0;border-bottom:0.5px solid rgba(247,244,239,0.06);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Priority placement in brand aesthetic searches</li>
-          <li style="font-size:14px;font-weight:400;color:rgba(247,244,239,0.85);padding:13px 0;border-bottom:0.5px solid rgba(247,244,239,0.06);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Shoppable video portfolio — every post earns</li>
-          <li style="font-size:14px;font-weight:400;color:rgba(247,244,239,0.85);padding:13px 0;border-bottom:0.5px solid rgba(247,244,239,0.06);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>AI rate card — know exactly what you're worth</li>
-          <li style="font-size:14px;font-weight:400;color:rgba(247,244,239,0.85);padding:13px 0;display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Direct contracts — signed on platform</li>
-        </ul>
+  </div>
+
+  <div class="detail-cta">
+    <div class="detail-cta-inner">
+      <div>
+        <div class="label label-gold" style="margin-bottom:12px;">Ready to join?</div>
+        <h2>Start building your<br>storefront today.</h2>
       </div>
-      <div style="position:relative;z-index:1;border-top:0.5px solid rgba(247,244,239,0.08);padding-top:32px;margin-top:32px;">
-        <div style="font-family:var(--serif);font-size:52px;font-weight:500;color:var(--gold);line-height:1;">$49</div>
-        <div style="font-size:13px;font-weight:400;color:rgba(247,244,239,0.4);margin-top:6px;">per month · Cancel anytime</div>
-        <div style="font-size:13px;font-weight:400;color:rgba(247,244,239,0.65);margin-top:12px;line-height:1.65;">Everything you need to get discovered and hired by the world's best brands.</div>
+      <div class="detail-cta-right">
+        <div style="font-size:40px;font-weight:300;color:var(--black);letter-spacing:-1px;">$49<span style="font-size:16px;color:var(--gray);font-weight:400;"> / month</span></div>
+        <button class="btn btn-primary">Join as creator</button>
+        <button class="btn btn-secondary" onclick="showPage('two')">← Back to overview</button>
       </div>
     </div>
   </div>
 
 </div>
 
-<!-- ══ PAGE — BRANDS ══ -->
+<!-- ══ BRANDS ══ -->
 <div class="page" id="page-brands">
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:92vh;border-bottom:0.5px solid var(--border);">
-    <div style="background:var(--ink);padding:56px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);font-family:var(--serif);font-size:300px;font-weight:500;font-style:italic;color:rgba(184,151,90,0.04);pointer-events:none;user-select:none;line-height:1;">B</div>
-      <div style="position:relative;z-index:1;">
-        <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:500;color:rgba(184,151,90,0.7);margin-bottom:28px;">For brands</div>
-        <h1 style="font-family:var(--serif);font-size:64px;font-weight:500;line-height:1.05;letter-spacing:-1px;color:var(--ivory);">Find the right<br><em style="font-style:italic;color:var(--gold);">creative match.</em></h1>
-        <p style="font-size:15px;font-weight:400;color:rgba(247,244,239,0.65);max-width:380px;line-height:1.8;margin-top:28px;">Stop sending PR packages blindly. Search creators by aesthetic identity, review verified performance data, and hire directly — all in one place.</p>
-        <div style="margin-top:40px;display:flex;flex-direction:column;gap:20px;">
-          <div style="padding:20px 0;border-bottom:0.5px solid rgba(247,244,239,0.07);">
-            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:6px;">Step 01</div>
-            <div style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--ivory);margin-bottom:6px;">Search by Aesthetic</div>
-            <div style="font-size:13px;font-weight:400;color:rgba(247,244,239,0.6);line-height:1.65;">Search creators by visual identity — Minimalist-Modern, Quiet Luxury, Street Luxe. Find who truly matches your brand aesthetic, not just who has the most followers.</div>
-          </div>
-          <div style="padding:20px 0;border-bottom:0.5px solid rgba(247,244,239,0.07);">
-            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:6px;">Step 02</div>
-            <div style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--ivory);margin-bottom:6px;">Review AI Media Kit</div>
-            <div style="font-size:13px;font-weight:400;color:rgba(247,244,239,0.6);line-height:1.65;">Every creator has a live AI media kit — real engagement stats, aesthetic scores, past brand deals, commerce performance, and suggested rate card. All verified. All real-time.</div>
-          </div>
-          <div style="padding:20px 0;">
-            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:6px;">Step 03</div>
-            <div style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--ivory);margin-bottom:6px;">Hire Directly</div>
-            <div style="font-size:13px;font-weight:400;color:rgba(247,244,239,0.6);line-height:1.65;">Chat, call, or text the creator directly inside Rebelion. Sign contracts on platform. Track campaign results. No email threads. No PR middlemen.</div>
-          </div>
+  <div class="detail-hero">
+    <div class="detail-hero-inner">
+      <div>
+        <div class="label">For brands</div>
+        <h1>Find the right<br>creative partner.<br>Every time.</h1>
+      </div>
+      <p class="lead">Stop sending PR blindly. Search creators by aesthetic, review verified performance data, and hire directly — all in one place.</p>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">Step 01</div>
+      <div class="step-title">Search by Aesthetic</div>
+      <div class="step-desc">Search creators by visual identity — Minimalist-Modern, Quiet Luxury, Street Luxe. Find who truly matches your brand, not just who has the most followers.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">Step 02</div>
+      <div class="step-title">Review AI Media Kit</div>
+      <div class="step-desc">Every creator has a live AI media kit — real engagement stats, aesthetic scores, past brand deals, and commerce performance. All verified. All real-time.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">Step 03</div>
+      <div class="step-title">Hire Directly</div>
+      <div class="step-desc">Chat, call, or text the creator directly inside Rebelion. Sign contracts on platform. Track campaign results. No email threads. No PR middlemen.</div>
+    </div>
+  </div>
+
+  <div class="section" style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="max">
+      <div class="label" style="margin-bottom:40px;">What you get</div>
+      <div class="perks" style="border:1px solid var(--border);">
+        <div class="perk" style="border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
+          <div class="perk-title">Aesthetic Search</div>
+          <div class="perk-desc">Find creators by visual identity. Not follower count. The right match every time.</div>
+        </div>
+        <div class="perk" style="border-bottom:1px solid var(--border);">
+          <div class="perk-title">AI-Matched Recommendations</div>
+          <div class="perk-desc">Claude AI suggests the best creator matches for your specific campaign and aesthetic.</div>
+        </div>
+        <div class="perk" style="border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
+          <div class="perk-title">Verified Performance Data</div>
+          <div class="perk-desc">Real engagement stats, past brand deals, and commerce metrics. No fake numbers.</div>
+        </div>
+        <div class="perk" style="border-bottom:1px solid var(--border);">
+          <div class="perk-title">Direct Communication</div>
+          <div class="perk-desc">Chat, call, or text creators directly inside Rebelion. No external email threads.</div>
+        </div>
+        <div class="perk" style="border-right:1px solid var(--border);">
+          <div class="perk-title">On-Platform Contracts</div>
+          <div class="perk-desc">Sign contracts directly on Rebelion. Transparent, fast, and fully accountable.</div>
+        </div>
+        <div class="perk">
+          <div class="perk-title">Campaign Analytics</div>
+          <div class="perk-desc">Track clicks, conversions, and GMV driven by each creator in real time.</div>
         </div>
       </div>
-      <button class="btn-ghost" style="color:var(--ivory);border-color:rgba(247,244,239,0.3);cursor:none;align-self:flex-start;margin-top:40px;">Join as brand</button>
     </div>
-    <div style="padding:56px;display:flex;flex-direction:column;justify-content:space-between;">
+  </div>
+
+  <div class="detail-cta">
+    <div class="detail-cta-inner">
       <div>
-        <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:28px;">What you get</div>
-        <ul style="list-style:none;">
-          <li style="font-size:14px;font-weight:400;color:#444;padding:13px 0;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Aesthetic search — find by visual identity</li>
-          <li style="font-size:14px;font-weight:400;color:#444;padding:13px 0;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>AI-matched creator recommendations</li>
-          <li style="font-size:14px;font-weight:400;color:#444;padding:13px 0;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Verified real-time performance data</li>
-          <li style="font-size:14px;font-weight:400;color:#444;padding:13px 0;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Direct chat, call and text with creators</li>
-          <li style="font-size:14px;font-weight:400;color:#444;padding:13px 0;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Contracts signed directly on platform</li>
-          <li style="font-size:14px;font-weight:400;color:#444;padding:13px 0;display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Campaign analytics — clicks, GMV, conversions</li>
-        </ul>
+        <div class="label" style="margin-bottom:12px;">Ready to find your match?</div>
+        <h2>Hire smarter.<br>Starting now.</h2>
       </div>
-      <div style="border-top:0.5px solid var(--border);padding-top:32px;margin-top:32px;">
-        <div style="font-family:var(--serif);font-size:52px;font-weight:500;color:var(--ink);line-height:1;">10%</div>
-        <div style="font-size:13px;font-weight:400;color:#888;margin-top:6px;">commission per deal closed</div>
-        <div style="font-size:13px;font-weight:400;color:#555;margin-top:12px;line-height:1.65;">Only pay when you successfully hire a creator. Zero upfront cost. Zero wasted PR spend.</div>
+      <div class="detail-cta-right">
+        <div style="font-size:40px;font-weight:300;color:var(--black);letter-spacing:-1px;">10%<span style="font-size:16px;color:var(--gray);font-weight:400;"> commission</span></div>
+        <button class="btn btn-primary">Join as brand</button>
+        <button class="btn btn-secondary" onclick="showPage('two')">← Back to overview</button>
       </div>
     </div>
   </div>
 
 </div>
 
-<!-- ══ PAGE 3 — REVENUE & CONTACT ══ -->
+<!-- ══ REVENUE & CONTACT ══ -->
 <div class="page" id="page-three">
 
-  <div class="revenue-hero">
-    <div>
-      <div class="eyebrow">Business model</div>
-      <h1>Two streams.<br>From day one.</h1>
-    </div>
-    <div class="revenue-hero-right">
-      <div class="revenue-hero-num">~$1M</div>
-      <div class="revenue-hero-label">Year 1 ARR target</div>
+  <div class="rev-hero">
+    <div class="rev-hero-inner">
+      <div>
+        <div class="label">Business model</div>
+        <h1>Two revenue streams.<br>From day one.</h1>
+      </div>
+      <div class="rev-target">
+        <div class="rev-target-num">~$1M</div>
+        <div class="rev-target-label">Year 1 ARR target</div>
+      </div>
     </div>
   </div>
 
-  <div class="revenue-grid">
-    <div class="revenue-col">
+  <div class="rev-grid">
+    <div class="rev-col">
       <div class="rev-label">Stream 01 — Creators</div>
       <div class="rev-num">$49</div>
       <div class="rev-unit">per creator / month</div>
-      <div class="rev-desc">Pro subscription gives creators priority search placement, AI media kit access, and Verified Pro badge. 10,000 creators in Year 1 = $588K ARR.</div>
+      <div class="rev-desc">Pro subscription. 10,000 creators in Year 1 = $588K ARR.</div>
     </div>
-    <div class="revenue-col">
+    <div class="rev-col">
       <div class="rev-label">Stream 02 — Brands</div>
       <div class="rev-num">10%</div>
       <div class="rev-unit">commission per deal</div>
-      <div class="rev-desc">Platform fee on every brand-creator contract signed. Average deal $5,000 × 500 deals = $250K–$375K additional revenue in Year 1.</div>
+      <div class="rev-desc">500 deals × $5,000 average = $250K–$375K additional revenue in Year 1.</div>
     </div>
-    <div class="revenue-col">
-      <div class="rev-label-dark">The bigger picture</div>
-      <div class="rev-num-dark">$500B</div>
-      <div class="rev-unit-dark">creator economy by 2030</div>
-      <div class="rev-desc-dark">India just passed the National Creator Economy Bill 2026 — formally recognizing creators as professionals. Rebelion is building the infrastructure this new profession needs. Capturing 0.1% of the market = $500M opportunity.</div>
+    <div class="rev-col dark">
+      <div class="rev-label">The bigger picture</div>
+      <div class="rev-num">$500B</div>
+      <div class="rev-unit">creator economy by 2030</div>
+      <div class="rev-desc">India just passed the National Creator Economy Bill 2026 — formally recognizing creators as professionals. Rebelion is building the infrastructure. 0.1% of the market = $500M opportunity.</div>
     </div>
   </div>
 
-  <div class="market-strip">
+  <div class="market-bar">
     <div class="market-item">
       <div class="market-num">$250B</div>
       <div class="market-label">Current market size</div>
@@ -670,36 +627,37 @@ footer {
       <div class="market-num">$500B</div>
       <div class="market-label">Projected by 2030</div>
     </div>
-    <div class="market-item">
-      <div class="market-num">0</div>
+    <div class="market-item" style="border-right:none;">
+      <div class="market-num">Zero</div>
       <div class="market-label">Professional infrastructure exists today</div>
     </div>
   </div>
 
-  <div class="contact">
+  <div class="contact-grid">
     <div class="contact-left">
-      <div class="eyebrow" style="color:rgba(184,151,90,0.7);">Join Rebelion</div>
-      <h2>The rebellion<br>starts <span>here.</span></h2>
-      <div class="contact-btns">
-        <button class="contact-btn d" onclick="showPage('home')">Join as creator</button>
-        <button class="contact-btn o" onclick="showPage('home')">Join as brand</button>
+      <div class="label" style="color:rgba(255,255,255,0.35);margin-bottom:16px;">Join Rebelion</div>
+      <h2>The rebellion<br>starts here.</h2>
+      <p>Join thousands of creators and brands already on the waitlist.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <button class="contact-btn contact-btn-w">Join as creator</button>
+        <button class="contact-btn contact-btn-o">Join as brand</button>
       </div>
     </div>
     <div class="contact-right">
       <h3>Get in touch</h3>
-      <div class="contact-form">
+      <div class="form">
         <div class="form-row">
-          <input class="form-input" type="text" placeholder="Your name"/>
-          <input class="form-input" type="email" placeholder="Your email"/>
+          <input type="text" placeholder="Your name"/>
+          <input type="email" placeholder="Your email"/>
         </div>
-        <select class="form-input" style="cursor:none;">
+        <select>
           <option value="" disabled selected>I am a...</option>
           <option>Creator</option>
           <option>Brand</option>
           <option>Investor</option>
           <option>Other</option>
         </select>
-        <textarea class="form-input" rows="4" placeholder="Tell us about yourself..." style="resize:none;"></textarea>
+        <textarea rows="4" placeholder="Tell us about yourself..."></textarea>
         <button class="form-submit">Send message</button>
         <div class="form-note">We respond within 24 hours.</div>
       </div>
@@ -708,7 +666,7 @@ footer {
 
 </div>
 
-<div class="bottom-bar">
+<div class="bottom-nav">
   <button class="b-tab active" onclick="showPage('home')">Home</button>
   <button class="b-tab" onclick="showPage('two')">Brands & Creators</button>
   <button class="b-tab" onclick="showPage('creators')">Creators</button>
@@ -717,7 +675,7 @@ footer {
 </div>
 
 <footer>
-  <div class="f-logo">Rebel<span>ion</span></div>
+  <div class="f-logo">Rebel<em>ion</em></div>
   <div class="f-links">
     <a href="#">Privacy</a>
     <a href="#">Terms</a>
@@ -727,20 +685,13 @@ footer {
 </footer>
 
 <script>
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
-function animateRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animateRing);}
-animateRing();
-
-function showPage(name){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.b-tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('page-'+name).classList.add('active');
-  const map={home:0,two:1,creators:2,brands:3,three:4};
-  if(map[name]!==undefined) document.querySelectorAll('.b-tab')[map[name]].classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.b-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  const map = { home:0, two:1, creators:2, brands:3, three:4 };
+  if (map[name] !== undefined) document.querySelectorAll('.b-tab')[map[name]].classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
 </body>
