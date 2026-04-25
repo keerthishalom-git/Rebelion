@@ -493,7 +493,7 @@ footer {
         <li>Shoppable video portfolio</li>
         <li>Direct brand chat, call and contracting</li>
       </ul>
-      <button class="btn-dark">Join as creator</button>
+      <button class="btn-dark" onclick="showPage('creators')">Explore creator details →</button>
     </div>
     <div class="two-col-right">
       <div class="eyebrow">For brands</div>
@@ -508,7 +508,7 @@ footer {
         <li>Campaign analytics dashboard</li>
         <li>Direct contracting and payments on platform</li>
       </ul>
-      <button class="btn-ghost" style="color:var(--ivory);border-color:rgba(247,244,239,0.3);">Join as brand</button>
+      <button class="btn-ghost" style="color:var(--ivory);border-color:rgba(247,244,239,0.3);cursor:none;" onclick="showPage('brands')">Explore brand details →</button>
     </div>
   </div>
 
@@ -518,6 +518,110 @@ footer {
       <div class="ai-strip-sub">Auto-syncs performance stats, aesthetic scores, and rate cards in real time. Every creator profile, always updated.</div>
     </div>
     <span class="ai-strip-badge">Learn more →</span>
+  </div>
+
+</div>
+
+<!-- ══ PAGE — CREATORS ══ -->
+<div class="page" id="page-creators">
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:92vh;border-bottom:0.5px solid var(--border);">
+    <div style="padding:80px 56px;border-right:0.5px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <div class="eyebrow">For creators</div>
+        <h1 style="font-family:var(--serif);font-size:64px;font-weight:500;line-height:1.05;letter-spacing:-1px;color:var(--ink);">Your aesthetic.<br><em style="font-style:italic;color:var(--gold);">Your storefront.</em></h1>
+        <p style="font-size:15px;font-weight:400;color:#555;max-width:380px;line-height:1.8;margin-top:28px;">Stop chasing algorithms. Build a professional storefront on Rebelion — post styled content, tag your niche, and let AI generate your live media kit. Brands come to you.</p>
+        <div style="margin-top:40px;display:flex;flex-direction:column;gap:20px;">
+          <div style="padding:20px 0;border-bottom:0.5px solid var(--border);">
+            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:6px;">Step 01</div>
+            <div style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--ink);margin-bottom:6px;">Register & Build</div>
+            <div style="font-size:13px;font-weight:400;color:#555;line-height:1.65;">Create your professional profile. Set your niche, upload styled content, and tag every product with shoppable links.</div>
+          </div>
+          <div style="padding:20px 0;border-bottom:0.5px solid var(--border);">
+            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:6px;">Step 02</div>
+            <div style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--ink);margin-bottom:6px;">AI Does the Work</div>
+            <div style="font-size:13px;font-weight:400;color:#555;line-height:1.65;">Claude AI automatically generates your live media kit — syncing your stats, tagging your aesthetic, and suggesting your rate card based on real market data.</div>
+          </div>
+          <div style="padding:20px 0;">
+            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:6px;">Step 03</div>
+            <div style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--ink);margin-bottom:6px;">Get Hired Directly</div>
+            <div style="font-size:13px;font-weight:400;color:#555;line-height:1.65;">Brands find you through aesthetic search, review your media kit, and reach out via chat, call, or text — directly on Rebelion. Sign contracts. Get paid.</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-dark" style="align-self:flex-start;margin-top:40px;">Join as creator</button>
+    </div>
+    <div style="background:var(--ink);padding:56px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);font-family:var(--serif);font-size:300px;font-weight:500;font-style:italic;color:rgba(184,151,90,0.04);pointer-events:none;user-select:none;line-height:1;">C</div>
+      <div style="position:relative;z-index:1;">
+        <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:500;color:rgba(184,151,90,0.7);margin-bottom:28px;">What you get</div>
+        <ul style="list-style:none;">
+          <li style="font-size:14px;font-weight:400;color:rgba(247,244,239,0.85);padding:13px 0;border-bottom:0.5px solid rgba(247,244,239,0.06);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Verified Pro badge — signals trust to brands</li>
+          <li style="font-size:14px;font-weight:400;color:rgba(247,244,239,0.85);padding:13px 0;border-bottom:0.5px solid rgba(247,244,239,0.06);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>AI Media Kit — auto-synced, always live</li>
+          <li style="font-size:14px;font-weight:400;color:rgba(247,244,239,0.85);padding:13px 0;border-bottom:0.5px solid rgba(247,244,239,0.06);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Priority placement in brand aesthetic searches</li>
+          <li style="font-size:14px;font-weight:400;color:rgba(247,244,239,0.85);padding:13px 0;border-bottom:0.5px solid rgba(247,244,239,0.06);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Shoppable video portfolio — every post earns</li>
+          <li style="font-size:14px;font-weight:400;color:rgba(247,244,239,0.85);padding:13px 0;border-bottom:0.5px solid rgba(247,244,239,0.06);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>AI rate card — know exactly what you're worth</li>
+          <li style="font-size:14px;font-weight:400;color:rgba(247,244,239,0.85);padding:13px 0;display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Direct contracts — signed on platform</li>
+        </ul>
+      </div>
+      <div style="position:relative;z-index:1;border-top:0.5px solid rgba(247,244,239,0.08);padding-top:32px;margin-top:32px;">
+        <div style="font-family:var(--serif);font-size:52px;font-weight:500;color:var(--gold);line-height:1;">$49</div>
+        <div style="font-size:13px;font-weight:400;color:rgba(247,244,239,0.4);margin-top:6px;">per month · Cancel anytime</div>
+        <div style="font-size:13px;font-weight:400;color:rgba(247,244,239,0.65);margin-top:12px;line-height:1.65;">Everything you need to get discovered and hired by the world's best brands.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ PAGE — BRANDS ══ -->
+<div class="page" id="page-brands">
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:92vh;border-bottom:0.5px solid var(--border);">
+    <div style="background:var(--ink);padding:56px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);font-family:var(--serif);font-size:300px;font-weight:500;font-style:italic;color:rgba(184,151,90,0.04);pointer-events:none;user-select:none;line-height:1;">B</div>
+      <div style="position:relative;z-index:1;">
+        <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:500;color:rgba(184,151,90,0.7);margin-bottom:28px;">For brands</div>
+        <h1 style="font-family:var(--serif);font-size:64px;font-weight:500;line-height:1.05;letter-spacing:-1px;color:var(--ivory);">Find the right<br><em style="font-style:italic;color:var(--gold);">creative match.</em></h1>
+        <p style="font-size:15px;font-weight:400;color:rgba(247,244,239,0.65);max-width:380px;line-height:1.8;margin-top:28px;">Stop sending PR packages blindly. Search creators by aesthetic identity, review verified performance data, and hire directly — all in one place.</p>
+        <div style="margin-top:40px;display:flex;flex-direction:column;gap:20px;">
+          <div style="padding:20px 0;border-bottom:0.5px solid rgba(247,244,239,0.07);">
+            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:6px;">Step 01</div>
+            <div style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--ivory);margin-bottom:6px;">Search by Aesthetic</div>
+            <div style="font-size:13px;font-weight:400;color:rgba(247,244,239,0.6);line-height:1.65;">Search creators by visual identity — Minimalist-Modern, Quiet Luxury, Street Luxe. Find who truly matches your brand aesthetic, not just who has the most followers.</div>
+          </div>
+          <div style="padding:20px 0;border-bottom:0.5px solid rgba(247,244,239,0.07);">
+            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:6px;">Step 02</div>
+            <div style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--ivory);margin-bottom:6px;">Review AI Media Kit</div>
+            <div style="font-size:13px;font-weight:400;color:rgba(247,244,239,0.6);line-height:1.65;">Every creator has a live AI media kit — real engagement stats, aesthetic scores, past brand deals, commerce performance, and suggested rate card. All verified. All real-time.</div>
+          </div>
+          <div style="padding:20px 0;">
+            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:6px;">Step 03</div>
+            <div style="font-family:var(--serif);font-size:20px;font-weight:500;color:var(--ivory);margin-bottom:6px;">Hire Directly</div>
+            <div style="font-size:13px;font-weight:400;color:rgba(247,244,239,0.6);line-height:1.65;">Chat, call, or text the creator directly inside Rebelion. Sign contracts on platform. Track campaign results. No email threads. No PR middlemen.</div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-ghost" style="color:var(--ivory);border-color:rgba(247,244,239,0.3);cursor:none;align-self:flex-start;margin-top:40px;">Join as brand</button>
+    </div>
+    <div style="padding:56px;display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:28px;">What you get</div>
+        <ul style="list-style:none;">
+          <li style="font-size:14px;font-weight:400;color:#444;padding:13px 0;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Aesthetic search — find by visual identity</li>
+          <li style="font-size:14px;font-weight:400;color:#444;padding:13px 0;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>AI-matched creator recommendations</li>
+          <li style="font-size:14px;font-weight:400;color:#444;padding:13px 0;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Verified real-time performance data</li>
+          <li style="font-size:14px;font-weight:400;color:#444;padding:13px 0;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Direct chat, call and text with creators</li>
+          <li style="font-size:14px;font-weight:400;color:#444;padding:13px 0;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Contracts signed directly on platform</li>
+          <li style="font-size:14px;font-weight:400;color:#444;padding:13px 0;display:flex;align-items:center;gap:12px;"><span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;display:inline-block;"></span>Campaign analytics — clicks, GMV, conversions</li>
+        </ul>
+      </div>
+      <div style="border-top:0.5px solid var(--border);padding-top:32px;margin-top:32px;">
+        <div style="font-family:var(--serif);font-size:52px;font-weight:500;color:var(--ink);line-height:1;">10%</div>
+        <div style="font-size:13px;font-weight:400;color:#888;margin-top:6px;">commission per deal closed</div>
+        <div style="font-size:13px;font-weight:400;color:#555;margin-top:12px;line-height:1.65;">Only pay when you successfully hire a creator. Zero upfront cost. Zero wasted PR spend.</div>
+      </div>
+    </div>
   </div>
 
 </div>
@@ -607,6 +711,8 @@ footer {
 <div class="bottom-bar">
   <button class="b-tab active" onclick="showPage('home')">Home</button>
   <button class="b-tab" onclick="showPage('two')">Brands & Creators</button>
+  <button class="b-tab" onclick="showPage('creators')">Creators</button>
+  <button class="b-tab" onclick="showPage('brands')">Brands</button>
   <button class="b-tab" onclick="showPage('three')">Revenue & Contact</button>
 </div>
 
@@ -632,7 +738,7 @@ function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.b-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
-  const map={home:0,two:1,three:2};
+  const map={home:0,two:1,creators:2,brands:3,three:4};
   if(map[name]!==undefined) document.querySelectorAll('.b-tab')[map[name]].classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
