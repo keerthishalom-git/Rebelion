@@ -125,7 +125,7 @@ hr { border: none; border-top: 1px solid var(--border); }
 .hero h1 { margin-bottom: 28px; max-width: 760px; }
 .hero h1 span { color: var(--gold); }
 .hero p.lead { margin-bottom: 40px; }
-.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 80px; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 0px; }
 .hero-stats { display: flex; gap: 64px; padding-top: 48px; border-top: 1px solid var(--border); }
 .stat-num { font-size: 32px; font-weight: 300; color: var(--black); letter-spacing: -0.5px; }
 .stat-label { font-size: 13px; font-weight: 400; color: var(--gray); margin-top: 4px; }
@@ -195,30 +195,8 @@ hr { border: none; border-top: 1px solid var(--border); }
 .detail-cta-right { display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
 
 /* ══════════════════════════
-   REVENUE & CONTACT
+   CONTACT
 ══════════════════════════ */
-.rev-hero { padding: 96px 48px 64px; border-bottom: 1px solid var(--border); }
-.rev-hero-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; }
-.rev-hero h1 { max-width: 480px; }
-.rev-target { text-align: right; flex-shrink: 0; }
-.rev-target-num { font-size: 56px; font-weight: 300; color: var(--gold); letter-spacing: -1px; line-height: 1; }
-.rev-target-label { font-size: 13px; font-weight: 400; color: var(--gray); margin-top: 6px; }
-.rev-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border-bottom: 1px solid var(--border); }
-.rev-col { background: var(--white); padding: 56px 48px; }
-.rev-col.dark { background: var(--black); }
-.rev-label { font-size: 12px; font-weight: 500; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
-.rev-col.dark .rev-label { color: rgba(255,255,255,0.4); }
-.rev-num { font-size: 52px; font-weight: 300; color: var(--black); letter-spacing: -1px; line-height: 1; margin-bottom: 6px; }
-.rev-col.dark .rev-num { color: var(--gold); }
-.rev-unit { font-size: 13px; font-weight: 400; color: var(--gray); margin-bottom: 20px; }
-.rev-col.dark .rev-unit { color: rgba(255,255,255,0.35); }
-.rev-desc { font-size: 14px; font-weight: 400; color: var(--gray); line-height: 1.65; }
-.rev-col.dark .rev-desc { color: rgba(255,255,255,0.55); }
-.market-bar { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border-bottom: 1px solid var(--border); background-color: var(--light); }
-.market-item { padding: 36px 48px; background: var(--light); border-right: 1px solid var(--border); }
-.market-item:last-child { border-right: none; }
-.market-num { font-size: 36px; font-weight: 300; color: var(--black); letter-spacing: -0.5px; }
-.market-label { font-size: 13px; font-weight: 400; color: var(--gray); margin-top: 6px; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
 .contact-left { padding: 80px 56px; border-right: 1px solid var(--border); background: var(--black); }
 .contact-left h2 { color: var(--white); margin-bottom: 16px; }
@@ -271,7 +249,6 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
   <a class="logo" href="#" onclick="showPage('home')">Rebel<em>ion</em></a>
   <ul class="nav-links">
     <li><a href="#" onclick="showPage('two')">Brands & Creators</a></li>
-    <li><a href="#" onclick="showPage('three')">Revenue</a></li>
     <li><a href="#" onclick="showPage('three')">Contact</a></li>
   </ul>
   <button class="nav-cta" onclick="showPage('home')">Join waitlist</button>
@@ -283,26 +260,13 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
   <div class="hero">
     <div class="hero-inner">
       <div class="label label-gold">The creator economy, redefined</div>
-      <h1>Where brands hire creators<br>by <span>aesthetic
+      <h1>Where brands hire creators<br>by <span>aesthetic</span></h1>
       <p class="lead">The professional marketplace where brands find the right creator — and creators get hired for the right work.</p>
       <div class="hero-btns">
         <button class="btn btn-primary" onclick="showPage('creators')">For creators</button>
         <button class="btn btn-secondary" onclick="showPage('brands')">For brands</button>
       </div>
-      <div class="hero-stats">
-        <div>
-          <div class="stat-num">12,000+</div>
-          <div class="stat-label">Verified creators</div>
-        </div>
-        <div>
-          <div class="stat-num">$4.2M</div>
-          <div class="stat-label">GMV facilitated</div>
-        </div>
-        <div>
-          <div class="stat-num">840+</div>
-          <div class="stat-label">Brand partners</div>
-        </div>
-      </div>
+
     </div>
   </div>
 
@@ -313,17 +277,17 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
         <div class="how-item">
           <div class="how-num">01 — Creators</div>
           <div class="how-title">Build your storefront</div>
-          <div class="how-desc">Register, post styled content, tag your aesthetic and products. AI generates your live media kit automatically.</div>
+          <div class="how-desc">Register, post styled content, and tag your aesthetic. Your professional storefront is live from day one.</div>
         </div>
         <div class="how-item">
           <div class="how-num">02 — Brands</div>
           <div class="how-title">Search by aesthetic</div>
-          <div class="how-desc">Find creators by visual identity — Minimalist-Modern, Quiet Luxury, Street Luxe. Not follower count.</div>
+          <div class="how-desc">Find creators by visual identity — Minimalist-Modern, Quiet Luxury, Street Luxe. Discover who truly embodies your brand.</div>
         </div>
         <div class="how-item">
           <div class="how-num">03 — Both</div>
-          <div class="how-title">Connect and close</div>
-          <div class="how-desc">Chat, call, or text directly on platform. Sign contracts. No email threads. No PR guesswork.</div>
+          <div class="how-title">Connect and collaborate</div>
+          <div class="how-desc">Chat, call, or text directly on platform. Sign contracts seamlessly. A smooth, professional experience from first contact to campaign launch.</div>
         </div>
       </div>
     </div>
@@ -339,23 +303,23 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
         <div class="features-list">
           <div class="feature-item">
             <div class="feature-title">Aesthetic-first discovery</div>
-            <div class="feature-desc">Search creators by visual identity, not follower count. Find who actually matches your brand.</div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-title">AI-powered media kits</div>
-            <div class="feature-desc">Claude AI auto-generates live media kits — real-time stats, aesthetic scores, and rate cards for every creator.</div>
+            <div class="feature-desc">Search creators by visual identity. Find who actually matches your brand's creative vision.</div>
           </div>
           <div class="feature-item">
             <div class="feature-title">Shoppable content</div>
-            <div class="feature-desc">Every video is natively shoppable. Direct product links. Pure purchase intent on every post.</div>
+            <div class="feature-desc">Every video is a seamless shopping experience. Integrated product links that convert viewers into customers.</div>
           </div>
           <div class="feature-item">
             <div class="feature-title">Direct contracting</div>
-            <div class="feature-desc">Chat, call, or text. Sign contracts directly on platform. No middlemen. No back and forth.</div>
+            <div class="feature-desc">Chat, call, or text. Sign contracts directly on platform. Fast, simple, and fully professional.</div>
           </div>
           <div class="feature-item">
             <div class="feature-title">Commerce analytics</div>
-            <div class="feature-desc">Real clicks, real conversions, real GMV. Not vanity metrics.</div>
+            <div class="feature-desc">Real clicks, real conversions, real GMV. Meaningful data that helps you grow.</div>
+          </div>
+          <div class="feature-item" style="background:var(--light);margin:0 -24px;padding:20px 24px;border-radius:2px;">
+            <div class="feature-title" style="display:flex;align-items:center;gap:8px;">Smart media kits <span style="font-size:11px;font-weight:500;color:var(--gold);letter-spacing:1px;text-transform:uppercase;border:1px solid var(--gold);padding:2px 8px;border-radius:2px;">Bonus</span></div>
+            <div class="feature-desc">On top of everything, the platform auto-generates a live media kit for every creator — syncing stats, aesthetic scores, and rate cards. A little extra magic.</div>
           </div>
         </div>
       </div>
@@ -385,12 +349,12 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
     <div class="split-col">
       <div class="label label-gold">For creators</div>
       <h2>Your aesthetic.<br>Your business.</h2>
-      <p class="body" style="margin-top:12px;margin-bottom:28px;">Stop chasing algorithms. Build a professional storefront, let AI generate your media kit, and get hired by brands that match your visual identity.</p>
+      <p class="body" style="margin-top:12px;margin-bottom:28px;">Build a professional storefront, let AI generate your media kit, and get hired by brands that match your visual identity.</p>
       <div class="price-big">$49</div>
       <div class="price-note">per month</div>
       <ul class="mini-list">
         <li>Verified Pro badge</li>
-        <li>AI media kit — auto-synced by Claude AI</li>
+        <li>Live media kit — auto-synced</li>
         <li>Priority placement in brand searches</li>
         <li>Shoppable video portfolio</li>
         <li>Direct brand chat, call and contracting</li>
@@ -400,7 +364,7 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
     <div class="split-col">
       <div class="label">For brands</div>
       <h2>Find the right<br>creative partner.</h2>
-      <p class="body" style="margin-top:12px;margin-bottom:28px;">Search by aesthetic identity. Review AI-generated media kits with verified commerce data. Hire directly — no PR, no guesswork.</p>
+      <p class="body" style="margin-top:12px;margin-bottom:28px;">Search by aesthetic identity. Review AI-generated media kits with verified commerce data. Hire directly and build lasting creative relationships.</p>
       <div class="price-big">10%</div>
       <div class="price-note">commission per deal closed</div>
       <ul class="mini-list">
@@ -416,8 +380,8 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
 
   <div class="ai-strip">
     <div>
-      <div class="ai-text"><span class="ai-dot"></span>AI Media Kit — Powered by Claude AI</div>
-      <div class="ai-sub">Auto-syncs performance stats, aesthetic scores, and rate cards in real time for every creator.</div>
+      <div class="ai-text"><span class="ai-dot"></span>Plus: Smart Media Kits, included for every creator</div>
+      <div class="ai-sub">A bonus on top of the platform — auto-synced stats, aesthetic scores, and rate cards, always up to date.</div>
     </div>
   </div>
 
@@ -432,7 +396,7 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
         <div class="label label-gold">For creators</div>
         <h1>Your aesthetic.<br>Your storefront.<br>Your business.</h1>
       </div>
-      <p class="lead">Stop chasing the algorithm. Build a professional presence on Rebelion and get hired by brands that actually match your creative identity.</p>
+      <p class="lead">Build a professional presence on Rebelion and get hired by brands that align with your creative identity.</p>
     </div>
   </div>
 
@@ -440,12 +404,12 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
     <div class="step">
       <div class="step-num">Step 01</div>
       <div class="step-title">Register & Build</div>
-      <div class="step-desc">Create your professional profile. Set your niche, upload styled content, and tag every product with shoppable links.</div>
+      <div class="step-desc">Create your professional profile. Set your niche, upload styled content, and showcase your products with shoppable links.</div>
     </div>
     <div class="step">
       <div class="step-num">Step 02</div>
-      <div class="step-title">AI Does the Work</div>
-      <div class="step-desc">Claude AI automatically generates your live media kit — syncing stats, tagging your aesthetic, and suggesting your rate card based on real market data.</div>
+      <div class="step-title">Your Storefront, Live</div>
+      <div class="step-desc">Your profile goes live with a full media kit — synced stats, aesthetic tags, and a rate card built from your work. Everything a brand needs to say yes.</div>
     </div>
     <div class="step">
       <div class="step-num">Step 03</div>
@@ -463,8 +427,8 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
           <div class="perk-desc">Signal trust and professionalism to every brand partner on the platform.</div>
         </div>
         <div class="perk" style="border-bottom:1px solid var(--border);">
-          <div class="perk-title">AI Media Kit — Live</div>
-          <div class="perk-desc">Auto-synced performance data, aesthetic scores, and rate card suggestions. Always updated.</div>
+          <div class="perk-title">Live Media Kit</div>
+          <div class="perk-desc">Auto-synced performance data, aesthetic scores, and rate card — always updated, always ready to share with brands.</div>
         </div>
         <div class="perk" style="border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
           <div class="perk-title">Priority Search Placement</div>
@@ -472,15 +436,15 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
         </div>
         <div class="perk" style="border-bottom:1px solid var(--border);">
           <div class="perk-title">Shoppable Portfolio</div>
-          <div class="perk-desc">Every video has tagged product links. Every post can earn.</div>
+          <div class="perk-desc">Every video has integrated product links. Every post is an opportunity to earn.</div>
         </div>
         <div class="perk" style="border-right:1px solid var(--border);">
-          <div class="perk-title">AI Rate Card</div>
-          <div class="perk-desc">Know exactly what you're worth based on real market data — never undercharge again.</div>
+          <div class="perk-title">Smart Rate Card</div>
+          <div class="perk-desc">Understand your true market value and price your work with confidence, backed by real data.</div>
         </div>
         <div class="perk">
           <div class="perk-title">Direct Contracting</div>
-          <div class="perk-desc">Sign brand contracts directly on platform. No email threads, no middlemen.</div>
+          <div class="perk-desc">Sign brand contracts directly on platform. Fast, transparent, and fully professional.</div>
         </div>
       </div>
     </div>
@@ -511,7 +475,7 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
         <div class="label">For brands</div>
         <h1>Find the right<br>creative partner.<br>Every time.</h1>
       </div>
-      <p class="lead">Stop sending PR blindly. Search creators by aesthetic, review verified performance data, and hire directly — all in one place.</p>
+      <p class="lead">Discover creators by aesthetic, review verified performance data, and build meaningful partnerships — all in one place.</p>
     </div>
   </div>
 
@@ -519,17 +483,17 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
     <div class="step">
       <div class="step-num">Step 01</div>
       <div class="step-title">Search by Aesthetic</div>
-      <div class="step-desc">Search creators by visual identity — Minimalist-Modern, Quiet Luxury, Street Luxe. Find who truly matches your brand, not just who has the most followers.</div>
+      <div class="step-desc">Search creators by visual identity — Minimalist-Modern, Quiet Luxury, Street Luxe. Find who truly embodies your brand and resonates with your audience.</div>
     </div>
     <div class="step">
       <div class="step-num">Step 02</div>
-      <div class="step-title">Review AI Media Kit</div>
-      <div class="step-desc">Every creator has a live AI media kit — real engagement stats, aesthetic scores, past brand deals, and commerce performance. All verified. All real-time.</div>
+      <div class="step-title">Review the Full Picture</div>
+      <div class="step-desc">Every creator has a live media kit — real engagement stats, aesthetic scores, past brand deals, and commerce performance. All verified. All real-time.</div>
     </div>
     <div class="step">
       <div class="step-num">Step 03</div>
       <div class="step-title">Hire Directly</div>
-      <div class="step-desc">Chat, call, or text the creator directly inside Rebelion. Sign contracts on platform. Track campaign results. No email threads. No PR middlemen.</div>
+      <div class="step-desc">Chat, call, or text the creator directly inside Rebelion. Sign contracts on platform. Track campaign results with clarity and confidence.</div>
     </div>
   </div>
 
@@ -539,19 +503,19 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
       <div class="perks" style="border:1px solid var(--border);">
         <div class="perk" style="border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
           <div class="perk-title">Aesthetic Search</div>
-          <div class="perk-desc">Find creators by visual identity. Not follower count. The right match every time.</div>
+          <div class="perk-desc">Find creators by visual identity. Discover who genuinely aligns with your brand's creative vision.</div>
         </div>
         <div class="perk" style="border-bottom:1px solid var(--border);">
-          <div class="perk-title">AI-Matched Recommendations</div>
-          <div class="perk-desc">Claude AI suggests the best creator matches for your specific campaign and aesthetic.</div>
+          <div class="perk-title">Smart Recommendations</div>
+          <div class="perk-desc">The platform surfaces the best creator matches for your campaign and aesthetic — a helpful boost on top of your own search.</div>
         </div>
         <div class="perk" style="border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
           <div class="perk-title">Verified Performance Data</div>
-          <div class="perk-desc">Real engagement stats, past brand deals, and commerce metrics. No fake numbers.</div>
+          <div class="perk-desc">Real engagement stats, past brand deals, and commerce metrics. Trustworthy data you can act on.</div>
         </div>
         <div class="perk" style="border-bottom:1px solid var(--border);">
           <div class="perk-title">Direct Communication</div>
-          <div class="perk-desc">Chat, call, or text creators directly inside Rebelion. No external email threads.</div>
+          <div class="perk-desc">Chat, call, or text creators directly inside Rebelion. Streamlined, professional, and always in one place.</div>
         </div>
         <div class="perk" style="border-right:1px solid var(--border);">
           <div class="perk-title">On-Platform Contracts</div>
@@ -581,62 +545,13 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
 
 </div>
 
-<!-- ══ REVENUE & CONTACT ══ -->
+<!-- ══ CONTACT ══ -->
 <div class="page" id="page-three">
-
-  <div class="rev-hero">
-    <div class="rev-hero-inner">
-      <div>
-        <div class="label">Business model</div>
-        <h1>Two revenue streams.<br>From day one.</h1>
-      </div>
-      <div class="rev-target">
-        <div class="rev-target-num">~$1M</div>
-        <div class="rev-target-label">Year 1 ARR target</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="rev-grid">
-    <div class="rev-col">
-      <div class="rev-label">Stream 01 — Creators</div>
-      <div class="rev-num">$49</div>
-      <div class="rev-unit">per creator / month</div>
-      <div class="rev-desc">Pro subscription. 10,000 creators in Year 1 = $588K ARR.</div>
-    </div>
-    <div class="rev-col">
-      <div class="rev-label">Stream 02 — Brands</div>
-      <div class="rev-num">10%</div>
-      <div class="rev-unit">commission per deal</div>
-      <div class="rev-desc">500 deals × $5,000 average = $250K–$375K additional revenue in Year 1.</div>
-    </div>
-    <div class="rev-col dark">
-      <div class="rev-label">The bigger picture</div>
-      <div class="rev-num">$500B</div>
-      <div class="rev-unit">creator economy by 2030</div>
-      <div class="rev-desc">India just passed the National Creator Economy Bill 2026 — formally recognizing creators as professionals. Rebelion is building the infrastructure. 0.1% of the market = $500M opportunity.</div>
-    </div>
-  </div>
-
-  <div class="market-bar">
-    <div class="market-item">
-      <div class="market-num">$250B</div>
-      <div class="market-label">Current market size</div>
-    </div>
-    <div class="market-item">
-      <div class="market-num">$500B</div>
-      <div class="market-label">Projected by 2030</div>
-    </div>
-    <div class="market-item" style="border-right:none;">
-      <div class="market-num">Zero</div>
-      <div class="market-label">Professional infrastructure exists today</div>
-    </div>
-  </div>
 
   <div class="contact-grid">
     <div class="contact-left">
       <div class="label" style="color:rgba(255,255,255,0.35);margin-bottom:16px;">Join Rebelion</div>
-      <h2>The rebellion<br>starts here.</h2>
+      <h2>The Rebelion<br>starts here.</h2>
       <p>Join thousands of creators and brands already on the waitlist.</p>
       <div style="display:flex;flex-direction:column;gap:10px;">
         <button class="contact-btn contact-btn-w">Join as creator</button>
@@ -671,7 +586,7 @@ footer { padding: 32px 48px; display: flex; align-items: center; justify-content
   <button class="b-tab" onclick="showPage('two')">Brands & Creators</button>
   <button class="b-tab" onclick="showPage('creators')">Creators</button>
   <button class="b-tab" onclick="showPage('brands')">Brands</button>
-  <button class="b-tab" onclick="showPage('three')">Revenue & Contact</button>
+  <button class="b-tab" onclick="showPage('three')">Contact</button>
 </div>
 
 <footer>
